@@ -1,2 +1,5 @@
 # browsers.fyi
-Get browser versions as website or abpi
+
+> Browser versions and release notes as site, feed or API.
+
+![Screenshot of browsers.fyi](./screenshot.png)
