@@ -1,0 +1,17 @@
+<h3>Desktop</h3>
+<ul class="browserlist">
+{% for browser in browserInfo | isDesktop %}
+  <li class="">
+    {% browserEntry browser %}
+  </li>
+{% endfor %}
+</ul>
+
+<h3>Mobile</h3>
+<ul class="browserlist browserlist__mobile">
+{% for browser in browserInfo | isMobile %}
+  <li class="">
+    {% browserEntry browser %}
+  </li>
+{% endfor %}
+</ul>

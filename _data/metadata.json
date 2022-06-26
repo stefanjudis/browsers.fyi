@@ -1,0 +1,17 @@
+{
+  "title": "browsers.fyi",
+  "url": "https://browsers.fyi",
+  "language": "en",
+  "description": "A site to find out about browser releases and versions.",
+  "feed": {
+    "subtitle": "I am writing about my experiences as a naval navel-gazer.",
+    "filename": "feed.xml",
+    "path": "/feed/feed.xml",
+    "id": "https://example.com/"
+  },
+  "author": {
+    "name": "Stefan Judis",
+    "email": "stefanjudis@gmail.com",
+    "url": "https://www.stefanjudis.com"
+  }
+}

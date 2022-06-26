@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title or metadata.title }}</title>
+    <meta name="description" content="{{ description or metadata.description }}">
+    <meta name="generator" content="{{ eleventy.generator }}">
+
+    <style>
+      html {
+        font-family: sans-serif;
+      }
+
+      html, body {
+        margin: 0;
+        padding: 0;
+        font-size: 100%;
+      }
+
+      @font-face {
+        font-family: 'Devonshire';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(./fancy-font.woff2) format('woff2');
+      }
+
+      h1 {
+        font-size: 7rem;
+        font-family: DevonShire;
+        color: white;
+        rotate: -5deg;
+        background: linear-gradient(220.55deg, #00E0EE 0%, #AD00FE 100%);
+        background-clip: text;
+          -webkit-background-clip: text;
+        color: transparent;
+        text-align: center;
+        width: min-content;
+        margin: 0 auto;
+      }
+
+      h2 {
+        text-align: center;
+        margin: 1rem 0 3rem;
+        font-weight: 400;
+        color: #4D00BE;
+        font-size: 1.25rem;
+      }
+
+      h3 {
+        text-align: center;
+        font-size: 1.5rem;
+        color: #5D00CE;
+      }
+
+      a {
+        font-weight: 800;
+      }
+
+      .container {
+        padding: 2rem 1rem;
+        max-width: 85ch;
+        margin: auto;
+      }
+
+      footer {
+        background: linear-gradient(220.55deg, #00E0EE 0%, #AD00FE 100%);
+        color: white;
+        padding: 1rem;
+      }
+
+      .browserlist {
+        display: grid;
+        text-align: center;
+        list-style: none;
+        gap: 3rem;
+        margin: 0 0 4rem;
+        padding: 0;
+        grid-template-columns: repeat( auto-fit, minmax(7rem, 1fr) );
+      }
+
+      .browserlist img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 3rem;
+      }
+
+      .browserlist__mobile {
+        gap: 2rem;
+        grid-template-columns: repeat( auto-fit, minmax(6rem, 1fr) );
+      }
+
+      .entry {
+        position: relative;
+      }
+
+      .entry__version {
+        position: absolute;
+        left: 50%;
+        font-size: 2rem;
+        top: 60%;
+        background: white;
+        padding: 0.75rem 0.75rem 0.5rem;
+        border-radius: 0.25rem;
+        box-shadow: 0 2px 5px #FFC0FF;
+        transform: translate(-50%, -1rem);
+      }
+
+      .entry__version span {
+        font-weight: bold;
+        background: linear-gradient(220.55deg, #00E0EE 0%, #AD00FE 100%);
+        background-clip: text;
+          -webkit-background-clip: text;
+        color: transparent;
+      }
+    </style>
+    <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}">
+    <link rel="alternate" href="{{ metadata.jsonfeed.path | url }}" type="application/json" title="{{ metadata.title }}">
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1 class="home">{{ metadata.title }}</h1>
+        <h2>All browser versions and release notes on one site.</h2>
+      </header>
+
+      <main{% if templateClass %} class="{{ templateClass }}"{% endif %}>
+
+        {{ content | safe }}
+      </main>
+    </div>
+    <footer>
+      <div class="container">
+        Based on MDN compat data.
+
+        Rebuilt at {{ config.builtAt() }}
+      </div>
+    </footer>
+  </body>
+</html>

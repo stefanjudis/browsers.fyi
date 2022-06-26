@@ -1,0 +1,24 @@
+{
+  "name": "browsers.fyi",
+  "version": "1.0.0",
+  "description": "Get browser versions as website or abpi",
+  "main": "index.js",
+  "scripts": {
+    "start": "eleventy --serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stefanjudis/browsers.fyi.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stefanjudis/browsers.fyi/issues"
+  },
+  "homepage": "https://github.com/stefanjudis/browsers.fyi#readme",
+  "dependencies": {
+    "@11ty/eleventy": "^1.0.1",
+    "@11ty/eleventy-fetch": "^3.0.0"
+  }
+}
