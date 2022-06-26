@@ -1,3 +1,5 @@
+const pluginRss = require('@11ty/eleventy-plugin-rss');
+
 module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter('isDesktop', (collection) =>
     collection.filter((item) => item.type === 'desktop')
@@ -5,7 +7,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter('isMobile', (collection) =>
     collection.filter((item) => item.type === 'mobile')
   );
-
   eleventyConfig.addFilter('mapToCurrent', (collection) =>
     collection.reduce((acc, cur) => {
       acc[cur.key] = { name: cur.name, ...cur.current };
@@ -14,6 +15,8 @@ module.exports = function (eleventyConfig) {
   );
 
   eleventyConfig.addPassthroughCopy({ static: '.' });
+
+  eleventyConfig.addPlugin(pluginRss);
 
   eleventyConfig.addShortcode('browserEntry', (browser) => {
     return `

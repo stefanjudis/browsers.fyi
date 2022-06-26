@@ -1,0 +1,27 @@
+---
+permalink: "/feed/"
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+	<title>{{ metadata.title }}</title>
+	<subtitle>{{ metadata.feed.subtitle }}</subtitle>
+	{% set absoluteUrl %}{{ metadata.feed.path | url | absoluteUrl(metadata.url) }}{% endset %}
+	<link href="{{ absoluteUrl }}" rel="self"/>
+	<link href="{{ metadata.url }}"/>
+	<updated>{{ releases | rssLastUpdatedDate }}</updated>
+	<id>{{ metadata.feed.id }}</id>
+	<author>
+		<name>{{ metadata.author.name }}</name>
+		<email>{{ metadata.author.email }}</email>
+	</author>
+	{%- for release in releases %}
+	{% set absolutePostUrl %}{{ post.release_notes }}{% endset %}
+	<entry>
+		<title>{{ release.name }} release {{ release.version }} is out!</title>
+		<link href="{{ release.release_notes }}"/>
+		<updated>{{ release.date | rssDate }}</updated>
+		<id>{{ release.release_notes }}</id>
+		<content type="html"><a href="{{ release.release_notes }}">{{ release.name }} release {{ release.version }} is out!</a></content>
+	</entry>
+	{%- endfor %}
+</feed>

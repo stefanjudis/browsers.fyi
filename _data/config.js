@@ -7,4 +7,14 @@ module.exports = {
       timeStyle: 'long',
     }).format(now);
   },
+  browsers: [
+    'chrome',
+    'edge',
+    'safari',
+    'firefox',
+    'chrome_android',
+    'safari_ios',
+    'firefox_android',
+    'samsunginternet_android',
+  ],
 };

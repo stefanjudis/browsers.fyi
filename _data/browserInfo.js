@@ -1,4 +1,5 @@
 const { AssetCache } = require('@11ty/eleventy-fetch');
+const { browsers } = require('../_data/config');
 
 async function getBrowserData(browser) {
   const response = await fetch(
@@ -44,17 +45,6 @@ module.exports = async function browserInfo() {
   if (browserData.isCacheValid('1d')) {
     return browserData.getCachedValue();
   }
-
-  const browsers = [
-    'chrome',
-    'edge',
-    'safari',
-    'firefox',
-    'chrome_android',
-    'safari_ios',
-    'firefox_android',
-    'samsunginternet_android',
-  ];
 
   const browserInfo = await Promise.all(
     browsers.map((browser) => getBrowserData(browser))
