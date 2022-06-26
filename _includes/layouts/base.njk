@@ -15,7 +15,7 @@
       html, body {
         margin: 0;
         padding: 0;
-        font-size: 100%;
+        font-size: 110%;
       }
 
       @font-face {
@@ -27,8 +27,9 @@
       }
 
       h1 {
-        font-size: 7rem;
+        font-size: clamp(2rem, 2rem + 10vw, 7rem);
         font-family: DevonShire;
+        height: 1.5em;
         color: white;
         rotate: -5deg;
         background: linear-gradient(220.55deg, #00E0EE 0%, #AD00FE 100%);
@@ -52,7 +53,8 @@
       h3 {
         text-align: center;
         font-size: 1.5rem;
-        color: #4270DE;
+        color: #7C3FF9;
+        margin-top: 4rem;
       }
 
       a {
@@ -72,12 +74,31 @@
         padding: 1rem;
       }
 
+      footer a {
+        color: white;
+      }
+
+      footer hr {
+        margin: 2rem;
+        border: none;
+        border-top: 1px solid white;
+      }
+
+      pre {
+        background: #7C3FF9;
+        border-radius: 0.25rem;
+        padding: 1rem;
+        color: white;
+        width: max-content;
+        margin: 0 auto;
+      }
+
       .browserlist {
         display: grid;
         text-align: center;
         list-style: none;
         gap: 3rem;
-        margin: 0 0 4rem;
+        margin: 0;
         padding: 0;
         grid-template-columns: repeat( auto-fit, minmax(7rem, 1fr) );
       }
@@ -85,11 +106,6 @@
       .browserlist img {
         width: 100%;
         height: auto;
-      }
-
-      .browserlist__mobile {
-        gap: 2rem;
-        grid-template-columns: repeat( auto-fit, minmax(6rem, 1fr) );
       }
 
       .entry {
@@ -116,27 +132,40 @@
           -webkit-background-clip: text;
         color: transparent;
       }
+
+      .center {
+        text-align: center;
+      }
+
+      .space-between {
+        display: flex;
+        justify-content: space-between;
+      }
     </style>
     <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}">
-    <link rel="alternate" href="{{ metadata.jsonfeed.path | url }}" type="application/json" title="{{ metadata.title }}">
   </head>
   <body>
     <div class="container">
       <header>
         <h1 class="home">{{ metadata.title }}</h1>
-        <h2>Browser versions and release notes as a site or API.</h2>
+        <h2>Browser versions and release notes as site, feed or API.</h2>
       </header>
 
-      <main{% if templateClass %} class="{{ templateClass }}"{% endif %}>
+      <main>
 
         {{ content | safe }}
       </main>
     </div>
     <footer>
       <div class="container">
-        Based on MDN compat data.
-
-        Rebuilt at {{ config.builtAt() }}
+        <div class="space-between">
+          <div>Based on <a href="https://github.com/mdn/browser-compat-data/tree/main/browsers">MDN Compat Data</a>.</div>
+          <div>Made by <a href="https://www.stefanjudis.com">Stefan Judis</a></div>
+        </div>
+        <hr>
+        <div class="center">
+          Rebuilt <strong>{{ config.builtAt() }}</strong>.
+        </div>
       </div>
     </footer>
   </body>
