@@ -54,7 +54,6 @@ module.exports = async function browserInfo() {
     'safari_ios',
     'firefox_android',
     'samsunginternet_android',
-    'webview_android',
   ];
 
   const browserInfo = await Promise.all(
