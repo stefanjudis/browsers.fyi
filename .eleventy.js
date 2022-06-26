@@ -6,6 +6,13 @@ module.exports = function (eleventyConfig) {
     collection.filter((item) => item.type === 'mobile')
   );
 
+  eleventyConfig.addFilter('mapToCurrent', (collection) =>
+    collection.reduce((acc, cur) => {
+      acc[cur.key] = { name: cur.name, ...cur.current };
+      return acc;
+    }, {})
+  );
+
   eleventyConfig.addPassthroughCopy({ static: '.' });
 
   eleventyConfig.addShortcode('browserEntry', (browser) => {

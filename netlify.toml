@@ -1,2 +1,7 @@
 [functions."rebuild"]
 schedule = "@hourly"
+
+[[headers]]
+  for = "/api/"
+  [headers.values]
+    Content-Type = "application/json"

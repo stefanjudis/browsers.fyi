@@ -30,6 +30,7 @@ async function getBrowserData(browser) {
 
   return {
     name,
+    key: browser,
     type,
     current,
     previous,
@@ -50,8 +51,8 @@ module.exports = async function browserInfo() {
     'safari',
     'firefox',
     'chrome_android',
-    'firefox_android',
     'safari_ios',
+    'firefox_android',
     'samsunginternet_android',
     'webview_android',
   ];
