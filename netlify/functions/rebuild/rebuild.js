@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 
-const API_ENDPOINT = process.env.BUILD_HOOK;
+const API_ENDPOINT = process.env.REBUILD_HOOK;
 
 module.exports.handler = async (event) => {
   try {
