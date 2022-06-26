@@ -21,7 +21,7 @@ permalink: "/feed/"
 		<link href="{{ release.release_notes }}"/>
 		<updated>{{ release.date | rssDate }}</updated>
 		<id>{{ release.release_notes }}</id>
-		<content type="html"><a href="{{ release.release_notes }}">{{ release.name }} release {{ release.version }} is out!</a></content>
+		<content type="html"><a href="{{ release.release_notes }}">{{ release.name }} {{ release.version }} is out!</a></content>
 	</entry>
 	{%- endfor %}
 </feed>
