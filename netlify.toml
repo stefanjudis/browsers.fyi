@@ -5,3 +5,8 @@ schedule = "@hourly"
   for = "/api/"
   [headers.values]
     Content-Type = "application/json"
+
+[[headers]]
+  for = "/feed/"
+  [headers.values]
+    Content-Type = "application/rss+xml"
