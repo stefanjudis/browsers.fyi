@@ -13,6 +13,12 @@ module.exports = function (eleventyConfig) {
       return acc;
     }, {})
   );
+  eleventyConfig.addFilter('removeFutureReleases', (releases) =>
+    releases.filter((release) => {
+      const today = new Date();
+      return today - release.date > 0;
+    })
+  );
 
   eleventyConfig.addPassthroughCopy({ static: '.' });
 

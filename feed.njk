@@ -14,7 +14,7 @@ permalink: "/feed/"
 		<name>{{ metadata.author.name }}</name>
 		<email>{{ metadata.author.email }}</email>
 	</author>
-	{%- for release in releases %}
+	{%- for release in releases | removeFutureReleases %}
 	{% set absolutePostUrl %}{{ post.release_notes }}{% endset %}
 	<entry>
 		<title>{{ release.name }} release {{ release.version }} is out!</title>
