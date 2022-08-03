@@ -33,17 +33,21 @@ module.exports = function (eleventyConfig) {
         <div class="entry__version"><span>${
           browser.current.version
         }</span></div>
-        <a href="${browser.current.release_notes}" aria-label="${
-      browser.name
-    } ${browser.current.version} release notes">${browser.name} ${
+        ${browser.name} ${
       browser.current.version
     } was released <span class="bold">${new Intl.DateTimeFormat('en-US', {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
-    }).format(new Date(browser.current.release_date))}</span></a>.
-      </div>
-    `;
+    }).format(new Date(browser.current.release_date))}.</span>
+    ${
+      browser.current.release_notes
+        ? `<div style="margin-top: 0.5rem">
+            <a style="font-size: 0.875em; color: #3260CE;" href="${browser.current.release_notes}" aria-label="${browser.name} ${browser.current.version} release notes">Release notes</a>
+          </div>`
+        : ''
+    }
+    </div>`;
   });
 
   return {
